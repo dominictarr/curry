@@ -39,6 +39,6 @@ in all, there are 8 ways to call the function.
     curry([left],fn,self)
     curry(fn,self)
 
-#full test coverage* for documented usuage!
+#full test coverage for documented usuage!
 
     > expresso test/curry.expresso.js
