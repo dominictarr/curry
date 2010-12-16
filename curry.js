@@ -1,33 +1,23 @@
 module.exports = parse
 
-function isArray(x){
-  return (x instanceof Array) }
-function isFunction(x){
-  return (x instanceof Function) }
 function curry (left,func,right,self){
   return function (){
-   return func.apply(self,[].concat(left).concat(toArray(arguments)).concat(right)) } }
-function toArray (args){
-  var a = []
-  for (i in args){
-    a.push(args[i])
+   return func.apply(self,concatArgs([].concat(left),arguments).concat(right)) 
   }
-  return a
 }
 
 function parse (a,b,c,d){
   var left, right, func, self
-  left = right = func = self  = null
 
   for(key in arguments){
     var value = arguments[key]
     
-    if(!right && isArray(value)){
+    if(!right && value instanceof Array){
       if(!left)
         left = value
       else
         right = value
-    } else if (!func && isFunction(value)){
+    } else if (!func && value instanceof Function){
       left = left || []
       func = value
     } else {
@@ -38,6 +28,10 @@ function parse (a,b,c,d){
   return curry(left,func,right,self)
 }
 
+function concatArgs (a,args){
+  for (i in args) a.push(args[i])
+  return a 
+}
     /*
     call styles:
     
