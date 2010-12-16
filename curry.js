@@ -1,34 +1,27 @@
-module.exports = parse
+module.exports = curry
 
-function curry (left,func,right,self){
-  return function (){
-   return func.apply(self,concatArgs([].concat(left),arguments).concat(right)) 
-  }
-}
-
-function parse (a,b,c,d){
+function curry (){
   var left, right, func, self
 
   for(key in arguments){
     var value = arguments[key]
     
     if(!right && value instanceof Array){
-      if(!left)
+      if (!func)  
         left = value
       else
         right = value
     } else if (!func && value instanceof Function){
-      left = left || []
       func = value
     } else {
       self = value
     }
   }
-  right = right || []
-  return curry(left,func,right,self)
+  return function (){
+   return func.apply(self,append([].concat(left || []),arguments).concat(right || [])) 
+  }
 }
-
-function concatArgs (a,args){
+function append (a,args){
   for (i in args) a.push(args[i])
   return a 
 }
