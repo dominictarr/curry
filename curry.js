@@ -11,18 +11,18 @@ function curry (){
         left = value
       else
         right = value
-    } else if (!func && value instanceof Function){
+    } else if (!func && value instanceof Function)
       func = value
-    } else {
+    else 
       self = value
-    }
   }
   return function (){
    return func.apply(self,append([].concat(left || []),arguments).concat(right || [])) 
   }
 }
 function append (a,args){
-  for (i in args) a.push(args[i])
+  for (i in args) 
+    a.push(args[i])
   return a 
 }
     /*
