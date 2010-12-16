@@ -6,12 +6,12 @@ function curry (){
   for(key in arguments){
     var value = arguments[key]
     
-    if(!right && value instanceof Array){
-      if (!func)  
+    if(!right && value instanceof Array)
+      if (!func) 
         left = value
       else
         right = value
-    } else if (!func && value instanceof Function)
+    else if (!func && value instanceof Function)
       func = value
     else 
       self = value
