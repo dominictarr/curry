@@ -1,20 +1,12 @@
-
-
-
-
 module.exports = parse
 
 function isArray(x){
-  return (x instanceof Array)
-}
+  return (x instanceof Array) }
 function isFunction(x){
-  return (x instanceof Function)
-}
+  return (x instanceof Function) }
 function curry (left,func,right,self){
   return function (){
-   return func.apply(self,[].concat(left).concat(toArray(arguments)).concat(right))
-  }
-}
+   return func.apply(self,[].concat(left).concat(toArray(arguments)).concat(right)) } }
 function toArray (args){
   var a = []
   for (i in args){
@@ -24,12 +16,31 @@ function toArray (args){
 }
 
 function parse (a,b,c,d){
-  var left  = null
-    , right = null
-    , func  = null
-    , self  = null
-  
+  var left, right, func, self
+  left = right = func = self  = null
+
+  for(key in arguments){
+    var value = arguments[key]
+    
+    if(!right && isArray(value)){
+      if(!left)
+        left = value
+      else
+        right = value
+    } else if (!func && isFunction(value)){
+      left = left || []
+      func = value
+    } else {
+      self = value
+    }
+  }
+  right = right || []
+  return curry(left,func,right,self)
+}
+
     /*
+    call styles:
+    
     curry([left],fn,[right])
     curry(fn,[right])
     curry([left],fn)
@@ -41,32 +52,4 @@ function parse (a,b,c,d){
     curry([left],fn,self)
     curry(fn,self)
     */
-
-  if(isArray(a)) {
-    left = a
-    if(isFunction (b)) {
-      func = b
-      if(isArray(c)) {
-        right = c
-        self = d
-      } else {
-        right = []
-        self = c
-      }
-    }
-  } else if (isFunction (a)){
-    left = []
-    func = a
-    if (isArray(b)) {
-      right = b
-      self = c
-    } else { 
-      right = [] 
-      self = b
-    }
-  }
-
-  return curry(left,func,right,self)
-}
-
 

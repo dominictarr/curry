@@ -78,3 +78,17 @@ exports ['can curry a function, this passed in'] = function (test){
 }
 
 
+exports ['right curry'] = function (test){
+  
+  function callback() {
+//    test.finish()
+  }
+  var fn = curry(x,['callback:',callback])
+    , list = [1,2,3,4,5]
+    , r = fn(list)
+    
+    test.deepEqual(r,[list,'callback:',callback])
+    test.deepEqual(r[2],callback)
+  r[2]()  
+}
+
