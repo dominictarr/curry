@@ -1,11 +1,11 @@
 {
   "name": "curry",
   "description": "flexible but simple curry function",
-  "version": "0.0.3",
+  "version": "0.0.0",
   "homepage": "https://github.com/dominictarr/curry",
   "repository": "git://github.com/dominictarr/curry.git",
   "author": "Dominic Tarr <dominic.tarr@gmail.com>",
-  "main": "curry",
+  "main": "./curry",
   "devDependencies": {
     "should": "0.0.x"
   , "expresso": ">=0.6.0"
