@@ -1,6 +1,10 @@
+var test = require('assert')
 
 var describe = require('should').describe
+//  , curry = require('curry@0.0.2')
+//  , remapper = 
   , curry = require('curry')
+//  , curry = new (require('remap/remapper'))(module, {curry: 'curry@0.0.2'}).require('curry')
 
   function x (a,b,c){
     return [a,b,c]
@@ -11,15 +15,15 @@ var describe = require('should').describe
 
 
 function beF (x){
-  describe(x,"result of curry()")
+  x
     .should.be.a('function')
 }
-exports ['can curry a function'] = function (test){
+exports ['can curry a function'] = function (){
   var cx = curry([1],x)
   
   beF(cx)
   
-  describe(cx(),"result on x(), left curried with first arg")
+  cx()
     .should.eql([1,undefined,undefined])
 
   var xc = curry(x,[1])
@@ -27,18 +31,18 @@ exports ['can curry a function'] = function (test){
   //if you don't pass in any args is does matter if it's left or right curried.
   beF(xc)
   
-  describe(xc(),"result on x(), left curried with first arg")
+  xc()
     .should.eql([1,undefined,undefined])
 
 }
 
-exports ['can curry a function, and args are in right place'] = function (test){
+exports ['can curry a function, and args are in right place'] = function (){
   
   var cx = curry([1],x)
   
   beF(cx)
   
-  describe(cx('X'),"result on x(\'X\'), left curried with first arg")
+  cx('X')
     .should.eql([1,'X',undefined])
 
   var xc = curry(x,[1])
@@ -46,12 +50,12 @@ exports ['can curry a function, and args are in right place'] = function (test){
   //if you don't pass in any args is does matter if it's left or right curried.
   beF(xc)
   
-  describe(xc('X'),"result on x(\'X\'), left curried with first arg")
+  xc('X')
     .should.eql(['X',1,undefined])
 }
 
 
-exports ['can curry a function, this passed in'] = function (test){
+exports ['can curry a function, this passed in'] = function (){
   var s = {helo: 'asdfvnurowfn249r00jy4'}
   var ys = curry(y,s)
   var cys = curry([1],y,s)
@@ -59,16 +63,16 @@ exports ['can curry a function, this passed in'] = function (test){
   var cycs = curry([1],y,[2],s)
   beF(ys)
   
-  describe(ys('X'),"result on y(\'X\'), curried with self")
+  ys('X')
     .should.eql({self: s, args: ['X',undefined,undefined]})
 
-  describe(cys('X'),"result on y(\'X\'), left curried with self")
+  cys('X')
     .should.eql({self: s, args: [1,'X',undefined]})
 
-  describe(ycs('X'),"result on y(\'X\'), right curried with self")
+  ycs('X')
     .should.eql({self: s, args: ['X',2,undefined]})
 
-  describe(cycs('X'),"result on y(\'X\'), left right curried with self")
+  cycs('X')
     .should.eql({self: s, args: [1,'X',2]})
 
 /*
@@ -77,8 +81,7 @@ exports ['can curry a function, this passed in'] = function (test){
 
 }
 
-
-exports ['right curry'] = function (test){
+exports ['right curry'] = function (){
   
   function callback() {
 //    test.finish()
