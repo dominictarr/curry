@@ -1,9 +1,0 @@
-{ "name" :"curry"
-, "author": "dominictarr"
-, "tests": 
-    { "inspect": 
-      { "test": "curry/test/curry.expresso"
-      , "target": "curry"
-      }
-    }
-}
