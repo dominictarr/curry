@@ -11,12 +11,14 @@ exports.anon = function () {
 
 exports.repl = function () {
     var node = spawn('node');
-    node.stdout.once('data', function (buf) {
+    node.stdout.on('data', function (buf) {
         node.stdin.write(
             'require("curry")([3], function (x,y) { return x * 2 + y })(4)\n'
         );
-        
-        node.stdout.once('data', function (buf) {
+
+        node.stdout.removeListener('data',arguments.callee)
+
+        node.stdout.on('data', function (buf) {
             node.stdin.end();
             
             var s = buf.toString();
@@ -24,6 +26,7 @@ exports.repl = function () {
                 console.error(s);
                 assert.fail('Invalid response');
             }
+        node.stdout.removeListener('data',arguments.callee)
         })
     });
 };
