@@ -1,7 +1,7 @@
 {
   "name": "curry",
   "description": "flexible but simple curry function",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/dominictarr/curry",
   "repository": "git://github.com/dominictarr/curry.git",
   "author": "Dominic Tarr <dominic.tarr@gmail.com>",
