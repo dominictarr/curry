@@ -1,0 +1,245 @@
+info it worked if it ends with ok
+verbose cli [ 'node',
+verbose cli   '/home/dominic/.nvm/v0.4.7/bin/npm',
+verbose cli   'publish',
+verbose cli   '.' ]
+info using npm@1.0.6
+info using node@v0.4.7
+verbose config file /home/dominic/.npmrc
+verbose config file /home/dominic/.nvm/v0.4.7/etc/npmrc
+verbose publish [ '.' ]
+silly testEngine { name: 'curry',
+silly testEngine   description: 'flexible but simple curry function',
+silly testEngine   version: '0.0.2',
+silly testEngine   homepage: 'https://github.com/dominictarr/curry',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/dominictarr/curry.git' },
+silly testEngine   author: 
+silly testEngine    { name: 'Dominic Tarr',
+silly testEngine      email: 'dominic.tarr@gmail.com' },
+silly testEngine   main: './curry',
+silly testEngine   devDependencies: { expresso: '>=0.6.0' },
+silly testEngine   scripts: { test: 'expresso test/curry.expresso.js' },
+silly testEngine   engines: { node: '*' },
+silly testEngine   dependencies: {},
+silly testEngine   _id: 'curry@0.0.2',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.7',
+silly testEngine   _defaultsLoaded: true }
+verbose caching package.json
+verbose loadDefaults curry@0.0.2
+verbose pack /home/dominic/dev/curry /tmp/npm-1306477823572/1306477823572-0.6239273431710899/tmp.tgz
+silly testEngine { name: 'curry',
+silly testEngine   description: 'flexible but simple curry function',
+silly testEngine   version: '0.0.2',
+silly testEngine   homepage: 'https://github.com/dominictarr/curry',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/dominictarr/curry.git' },
+silly testEngine   author: 
+silly testEngine    { name: 'Dominic Tarr',
+silly testEngine      email: 'dominic.tarr@gmail.com' },
+silly testEngine   main: './curry',
+silly testEngine   devDependencies: { expresso: '>=0.6.0' },
+silly testEngine   scripts: { test: 'expresso test/curry.expresso.js' },
+silly testEngine   engines: { node: '*' },
+silly testEngine   dependencies: {},
+silly testEngine   _id: 'curry@0.0.2',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.7',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   path: '/home/dominic/dev/curry' }
+verbose caching /home/dominic/dev/curry/package.json
+verbose loadDefaults curry@0.0.2
+verbose mkdir done: /tmp/npm-1306477823572/1306477823572-0.6239273431710899 755
+verbose mkdir'ed /tmp/npm-1306477823572/1306477823572-0.6239273431710899
+verbose tar about to write tar and gzip it.
+silly tar args [ '-cvf',
+silly tar args   '-',
+silly tar args   'curry/package.json',
+silly tar args   'curry/index.js',
+silly tar args   'curry/README.md',
+silly tar args   'curry/curry.js',
+silly tar args   'curry/test/anon.expresso.js',
+silly tar args   'curry/test/curry.expresso.js' ]
+verbose success tar -cvf - <file list elided>
+verbose success gzip "--stdout"
+verbose mkdir done: /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package
+silly gunzTarPerm modes [ '755', '644' ]
+verbose success gzip "--decompress" "--stdout" "/tmp/npm-1306477823572/1306477823572-0.6239273431710899/tmp.tgz"
+verbose success tar "-mvxpf" "-" "--no-same-owner" "-C" "/tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm"
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/package.json
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/index.js
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/README.md
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/curry.js
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/test/
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/test/anon.expresso.js
+silly asyncMap in gTP /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry/test/curry.expresso.js
+verbose gunzed /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry
+verbose rm'ed /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package
+verbose renamed [ '/tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/___package.npm/curry',
+verbose renamed   '/tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package' ]
+silly testEngine { name: 'curry',
+silly testEngine   description: 'flexible but simple curry function',
+silly testEngine   version: '0.0.2',
+silly testEngine   homepage: 'https://github.com/dominictarr/curry',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/dominictarr/curry.git' },
+silly testEngine   author: 
+silly testEngine    { name: 'Dominic Tarr',
+silly testEngine      email: 'dominic.tarr@gmail.com' },
+silly testEngine   main: './curry',
+silly testEngine   devDependencies: { expresso: '>=0.6.0' },
+silly testEngine   scripts: { test: 'expresso test/curry.expresso.js' },
+silly testEngine   engines: { node: '*' },
+silly testEngine   dependencies: {},
+silly testEngine   _id: 'curry@0.0.2',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.7',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   path: '/tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package' }
+verbose caching /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package/package.json
+verbose loadDefaults curry@0.0.2
+verbose tarball contents [ 'package' ]
+verbose from cache /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package/package.json
+verbose pack /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package /home/dominic/.npm/curry/0.0.2/package.tgz
+verbose from cache /tmp/npm-1306477823572/1306477823572-0.6239273431710899/contents/package/package.json
+verbose mkdir done: /home/dominic/.npm/curry/0.0.2 755
+verbose mkdir'ed /home/dominic/.npm/curry/0.0.2
+verbose tar about to write tar and gzip it.
+silly tar args [ '-cvf',
+silly tar args   '-',
+silly tar args   'package/package.json',
+silly tar args   'package/index.js',
+silly tar args   'package/README.md',
+silly tar args   'package/curry.js',
+silly tar args   'package/test/anon.expresso.js',
+silly tar args   'package/test/curry.expresso.js' ]
+verbose success tar -cvf - <file list elided>
+verbose success gzip "--stdout"
+verbose mkdir done: /home/dominic/.npm/curry/0.0.2/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/dominic/.npm/curry/0.0.2/package
+silly gunzTarPerm modes [ '755', '644' ]
+verbose success gzip "--decompress" "--stdout" "/home/dominic/.npm/curry/0.0.2/package.tgz"
+verbose success tar "-mvxpf" "-" "--no-same-owner" "-C" "/home/dominic/.npm/curry/0.0.2/___package.npm"
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/package.json
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/index.js
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/README.md
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/curry.js
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/test/
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/test/anon.expresso.js
+silly asyncMap in gTP /home/dominic/.npm/curry/0.0.2/___package.npm/package/test/curry.expresso.js
+verbose gunzed /home/dominic/.npm/curry/0.0.2/___package.npm/package
+verbose rm'ed /home/dominic/.npm/curry/0.0.2/package
+verbose renamed [ '/home/dominic/.npm/curry/0.0.2/___package.npm/package',
+verbose renamed   '/home/dominic/.npm/curry/0.0.2/package' ]
+silly testEngine { name: 'curry',
+silly testEngine   description: 'flexible but simple curry function',
+silly testEngine   version: '0.0.2',
+silly testEngine   homepage: 'https://github.com/dominictarr/curry',
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/dominictarr/curry.git' },
+silly testEngine   author: 
+silly testEngine    { name: 'Dominic Tarr',
+silly testEngine      email: 'dominic.tarr@gmail.com' },
+silly testEngine   main: './curry',
+silly testEngine   devDependencies: { expresso: '>=0.6.0' },
+silly testEngine   scripts: { test: 'expresso test/curry.expresso.js' },
+silly testEngine   engines: { node: '*' },
+silly testEngine   dependencies: {},
+silly testEngine   _id: 'curry@0.0.2',
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.6',
+silly testEngine   _nodeVersion: 'v0.4.7',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   dist: 
+silly testEngine    { shasum: '308de304f5a65c557b1626c1b4bad6bd7ae24832',
+silly testEngine      tarball: 'http://registry.npmjs.org/curry/-/curry-0.0.2.tgz' } }
+verbose caching /home/dominic/.npm/curry/0.0.2/package/package.json
+verbose loadDefaults curry@0.0.2
+silly updated sha bytes 1908
+info shasum 308de304f5a65c557b1626c1b4bad6bd7ae24832
+info shasum /home/dominic/.npm/curry/0.0.2/package.tgz
+verbose from cache /home/dominic/.npm/curry/0.0.2/package/package.json
+verbose chmod /home/dominic/.npm/curry/0.0.2/package.json 644
+verbose chmod /home/dominic/.npm/curry/0.0.2/package.tgz 644
+silly publish { name: 'curry',
+silly publish   description: 'flexible but simple curry function',
+silly publish   version: '0.0.2',
+silly publish   homepage: 'https://github.com/dominictarr/curry',
+silly publish   repository: 
+silly publish    { type: 'git',
+silly publish      url: 'git://github.com/dominictarr/curry.git' },
+silly publish   author: 
+silly publish    { name: 'Dominic Tarr',
+silly publish      email: 'dominic.tarr@gmail.com' },
+silly publish   main: './curry',
+silly publish   devDependencies: { expresso: '>=0.6.0' },
+silly publish   scripts: { test: 'expresso test/curry.expresso.js' },
+silly publish   engines: { node: '*' },
+silly publish   dependencies: {},
+silly publish   _id: 'curry@0.0.2',
+silly publish   _engineSupported: true,
+silly publish   _npmVersion: '1.0.6',
+silly publish   _nodeVersion: 'v0.4.7',
+silly publish   _defaultsLoaded: true,
+silly publish   dist: 
+silly publish    { shasum: '308de304f5a65c557b1626c1b4bad6bd7ae24832',
+silly publish      tarball: 'http://registry.npmjs.org/curry/-/curry-0.0.2.tgz' } }
+info prepublish curry@0.0.2
+verbose PUT curry
+verbose raw, before any munging curry
+verbose url resolving [ 'http://registry.npmjs.org/', './curry' ]
+verbose url resolved http://registry.npmjs.org/curry
+verbose url parsed { protocol: 'http:',
+verbose url parsed   slashes: true,
+verbose url parsed   host: 'registry.npmjs.org',
+verbose url parsed   hostname: 'registry.npmjs.org',
+verbose url parsed   href: 'http://registry.npmjs.org/curry',
+verbose url parsed   pathname: '/curry' }
+WARN Sending authorization over insecure channel.
+silly writing json { _id: 'curry',
+silly writing json   name: 'curry',
+silly writing json   description: 'flexible but simple curry function',
+silly writing json   'dist-tags': {},
+silly writing json   versions: {},
+silly writing json   maintainers: 
+silly writing json    [ { name: 'dominictarr',
+silly writing json        email: 'dominic.tarr@gmail.com' } ] }
+verbose response http://registry.npmjs.org/curry
+silly chunk {"error":"conflict","reason":"Document update conflict."}
+silly chunk 
+verbose GET curry
+verbose raw, before any munging curry
+verbose url resolving [ 'http://registry.npmjs.org/', './curry' ]
+verbose url resolved http://registry.npmjs.org/curry
+verbose url parsed { protocol: 'http:',
+verbose url parsed   slashes: true,
+verbose url parsed   host: 'registry.npmjs.org',
+verbose url parsed   hostname: 'registry.npmjs.org',
+verbose url parsed   href: 'http://registry.npmjs.org/curry',
+verbose url parsed   pathname: '/curry' }
+verbose response http://registry.npmjs.org/curry
+silly chunk {"_id":"curry","_rev":"7-e7dca27fedd6f937337724d9e2de4725","name":"curry","description":"flexible but simple curry function - now compatible with firefox","dist-tags":{"latest":"0.0.2"},"versions":{"0.0.0":{"name":"curry","description":"flexible but simple curry function","version":"0.0.0","homepage":"https://github.com/dominictarr/curry","repository":"git://github.com/dominictarr/curry.git","author":{"name":"Dominic Tarr","email":"dominic.tarr@gmail.com"},"main":"./curry","devDependencies":{"should":"0.0.x","expresso":">=0.6.0"},"scripts":{"test":"expresso test/curry.expresso.js"},"engines":{"node":"*"},"_id":"curry@0.0.0","_engineSupported":true,"_npmVersion":"0.2.17","_nodeVersion":"v0.3.0","directories":{},"files":[""],"_defaultsLoaded":true,"dist":{"shasum":"a1dab8304e926a5bf262e54aebec35c1c94357a8","tarball":"http://registry.npmjs.org/curry/-/curry-0.0.0.tgz"}},"0.0.1":{"name":"curry","description":"flexible but simple curry function","version":"0.0.1","homepage":"https://github.com/dominictarr/curry","repository":{"type":"git","url":"git://github.com/dominictarr/curry.git"},"author":{"name":"Dominic Tarr","email":"dominic.tarr@gmail.com"},"main":"./curry","devDependencies":{"should":"0.0.x","expresso":">=0.6.0"},"scripts":{"test":"ex
+silly chunk presso test/curry.expresso.js"},"engines":{"node":"*"},"_id":"curry@0.0.1","_engineSupported":true,"_npmVersion":"0.3.12","_nodeVersion":"v0.4.1","directories":{},"files":[""],"_defaultsLoaded":true,"dist":{"shasum":"590e4c486475da3ecca7f676796fb688f1363ac5","tarball":"http://registry.npmjs.org/curry/-/curry-0.0.1.tgz"}},"0.0.2":{"name":"curry","description":"flexible but simple curry function - now compatible with firefox","version":"0.0.2","homepage":"https://github.com/dominictarr/curry","repository":{"type":"git","url":"git://github.com/dominictarr/curry.git"},"author":{"name":"Dominic Tarr","email":"dominic.tarr@gmail.com"},"main":"./curry","devDependencies":{"should":"0.0.x","expresso":">=0.6.0"},"scripts":{"test":"expresso test/curry.expresso.js"},"engines":{"node":"*"},"_id":"curry@0.0.2","_engineSupported":true,"_npmVersion":"0.3.12","_nodeVersion":"v0.4.2","directories":{},"files":[""],"_defaultsLoaded":true,"dist":{"shasum":"ffda336c4011a2e7cb8c90bca6fa85fe6111810f","tarball":"http://registry.npmjs.org/curry/-/curry-0.0.2.tgz"}}},"maintainers":[{"name":"dominictarr","email":"dominic.tarr@gmail.com"}],"time":{"0.0.0":"2011-02-07T10:07:58.632Z","0.0.1":"2011-03-03T05:51:14.360Z","0.0.2":"2011-03-23T10:40:12.040Z"},"author":{"name":"Dominic Tarr","email":"dominic.tarr@gmail.com"},"repository":{"type":"git","url":"git://github.com/dominictarr/curry.git"}}
+info Already published curry@0.0.2
+verbose uploading bin dists []
+ERR! publish fail Cannot publish over existing version.
+ERR! publish fail Bump the 'version' field, set the --force flag, or
+ERR! publish fail     npm unpublish 'curry@0.0.2'
+ERR! publish fail and try again
+ERR! 
+ERR! System Linux 2.6.35-28-generic
+ERR! command "node" "/home/dominic/.nvm/v0.4.7/bin/npm" "publish" "."
+verbose exit [ 1, true ]
