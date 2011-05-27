@@ -7,8 +7,7 @@
   "author": "Dominic Tarr <dominic.tarr@gmail.com>",
   "main": "./curry",
   "devDependencies": {
-    "should": "0.0.x"
-  , "expresso": ">=0.6.0"
+    "expresso": ">=0.6.0"
   },
   "scripts": {
     "test": "expresso test/curry.expresso.js"
