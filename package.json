@@ -3,16 +3,12 @@
   "description": "flexible but simple curry function",
   "version": "0.0.3",
   "homepage": "https://github.com/dominictarr/curry",
-  "repository": "git://github.com/dominictarr/curry.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dominictarr/curry.git"},
   "author": "Dominic Tarr <dominic.tarr@gmail.com>",
   "main": "./curry",
-  "devDependencies": {
-    "expresso": ">=0.6.0"
-  },
   "scripts": {
-    "test": "expresso test/curry.expresso.js"
-  },
-  "engines": {
-    "node": "*"
+    "test": "synct test/*.js"
   }
 }
