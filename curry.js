@@ -5,7 +5,7 @@ function curry (){
 
   for (var i = 0; i < arguments.length; i++) {
     var value = arguments[i]
-    
+
     if (!right && Array.isArray(value))
       if (!func)
         left = value
@@ -16,13 +16,12 @@ function curry (){
     else
       self = value
   }
-  
   return function() {
    return func.apply(self,append([].concat(left || []),arguments).concat(right || []))
   }
 }
 function append (a, args) {
-  for (var i = 0; i < arguments.length; i++)
+  for (var i = 0; i < args.length; i++)
     a.push(args[i])
   return a
 }

@@ -83,3 +83,12 @@ exports ['right curry'] = function (){
   r[2]()  
 }
 
+
+exports ['math'] = function () {
+
+    assert.equal(
+        curry([3], function (x,y) { return x * 2 + y })(4),
+        3 * 2 + 4
+    );
+
+}

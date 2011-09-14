@@ -3,7 +3,7 @@ var curry = require('curry');
 var spawn = require('child_process').spawn;
 
 exports.anon = function () {
-    assert.eql(
+    assert.equal(
         curry([3], function (x,y) { return x * 2 + y })(4),
         3 * 2 + 4
     );
