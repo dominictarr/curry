@@ -3,27 +3,28 @@ module.exports = curry
 function curry (){
   var left, right, func, self
 
-  for(key in arguments){
-    var value = arguments[key]
+  for (var i = 0; i < arguments.length; i++) {
+    var value = arguments[i]
     
-    if(!right && Array.isArray(value))
-      if (!func) 
+    if (!right && Array.isArray(value))
+      if (!func)
         left = value
       else
         right = value
     else if (!func && typeof value === 'function')
       func = value
-    else 
+    else
       self = value
   }
-  return function (){
-   return func.apply(self,append([].concat(left || []),arguments).concat(right || [])) 
+  
+  return function() {
+   return func.apply(self,append([].concat(left || []),arguments).concat(right || []))
   }
 }
-function append (a,args){
-  for (i in args) 
+function append (a, args) {
+  for (var i = 0; i < arguments.length; i++)
     a.push(args[i])
-  return a 
+  return a
 }
     /*
     call styles:
