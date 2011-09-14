@@ -4,7 +4,7 @@ function curry (){
   var left, right, func, self
 
   for (var i = 0; i < arguments.length; i++) {
-    var value = arguments[key]
+    var value = arguments[i]
     
     if (!right && Array.isArray(value))
       if (!func)
