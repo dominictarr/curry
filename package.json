@@ -8,7 +8,8 @@
     "url": "git://github.com/dominictarr/curry.git"},
   "author": "Dominic Tarr <dominic.tarr@gmail.com>",
   "main": "./curry",
+  "devDependencies": {"synct": "1" },
   "scripts": {
-    "test": "synct test/*.js"
+    "test": "synct test/"
   }
 }
