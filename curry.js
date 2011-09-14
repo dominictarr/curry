@@ -1,33 +1,30 @@
-module.exports = curry;
+module.exports = curry
 
-function curry () {
-  var left, right, func, self;
+function curry (){
+  var left, right, func, self
 
   for (var i = 0; i < arguments.length; i++) {
-    var value = arguments[key];
+    var value = arguments[key]
     
-    if (!right && Array.isArray(value)) {
-      if (!func) {
-        left = value;
-      } else {
-        right = value;
-      }
-    } else if (!func && typeof value === 'function') {
-      func = value;
-    } else {
-      self = value;
-    }
+    if (!right && Array.isArray(value))
+      if (!func)
+        left = value
+      else
+        right = value
+    else if (!func && typeof value === 'function')
+      func = value
+    else
+      self = value
   }
   
-  return function () {
-   return func.apply(self,append([].concat(left || []),arguments).concat(right || []));
+  return function() {
+   return func.apply(self,append([].concat(left || []),arguments).concat(right || []))
   }
 }
 function append (a, args) {
-  for (var i = 0; i < arguments.length; i++) {
+  for (var i = 0; i < arguments.length; i++)
     a.push(args[i])
-  }
-  return a;
+  return a
 }
     /*
     call styles:
