@@ -1,18 +1,5 @@
-CURRY
-=====
+var curry = require('../');
 
-# curry function without anything *too clever*
-_(... because hunger is the finest spice)_
-
-# install
-
-```bash
-npm install curry
-```
-
-# Usage
-
-```javascript
 //-- creating a curried function is pretty
 //-- straight forward:
 var add = curry(function(a, b){ return a + b });
@@ -43,4 +30,3 @@ var zipAddWith123 = zipAdd([1, 2, 3]);
 //-- both functions are usable as you'd expect at any time:
 zipAdd([1, 2, 3], [1, 2, 3]); //= [2, 4, 6]
 zipAddWith123([5, 6, 7]) //= [6, 8, 10]
-```
