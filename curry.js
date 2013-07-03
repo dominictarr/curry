@@ -1,42 +1,16 @@
-module.exports = curry
+var slice = Array.prototype.slice;
+var toArray = function(a){ return slice.call(a) }
 
-function curry (){
-  var left, right, func, self
-
-  for (var i = 0; i < arguments.length; i++) {
-    var value = arguments[i]
-
-    if (!right && Array.isArray(value))
-      if (!func)
-        left = value
-      else
-        right = value
-    else if (!func && typeof value === 'function')
-      func = value
-    else
-      self = value
-  }
-  return function() {
-   return func.apply(self,append([].concat(left || []),arguments).concat(right || []))
-  }
+var genFn = function(fn, args){
+    return function(){
+        var nextArgs = args.concat(toArray(arguments));
+        if ( nextArgs.length > fn.length ) return fn.apply(null, nextArgs.slice(0, fn.length));
+        if ( nextArgs.length === fn.length ) return fn.apply(null, nextArgs);
+        else return genFn(fn, nextArgs);
+    }
 }
-function append (a, args) {
-  for (var i = 0; i < args.length; i++)
-    a.push(args[i])
-  return a
-}
-    /*
-    call styles:
-    
-    curry([left],fn,[right])
-    curry(fn,[right])
-    curry([left],fn)
-    curry(fn)
+var curry = function(fn){
+    return genFn(fn, []);
+};
 
-    calling styles:
-    curry([left],fn,[right],self)
-    curry(fn,[right],self)
-    curry([left],fn,self)
-    curry(fn,self)
-    */
-
+module.exports = curry;
