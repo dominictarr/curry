@@ -1,7 +1,7 @@
 CURRY
 =====
 
-# curry function without anything *too clever*
+A curry function without anything **too clever**
 _(... because hunger is the finest spice)_
 
 [![browser support](https://ci.testling.com/hughfdjackson/curry.png)](https://ci.testling.com/hughfdjackson/curry)
