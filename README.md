@@ -11,6 +11,9 @@ _(... because hunger is the finest spice)_
 ```bash
 npm install curry
 ```
+# Why
+
+If you don't know currying, and aren't sold on it's awesome, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) will help.
 
 # Usage
 
