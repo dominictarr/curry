@@ -7,17 +7,17 @@ var toArray = function(a){ return slice.call(a) }
 var createFn = function(fn, args){
     var arity = fn.length - args.length;
 
-    if ( arity === 0 )  return function curriedFn(){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 1 )  return function curriedFn(a){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 2 )  return function curriedFn(a,b){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 3 )  return function curriedFn(a,b,c){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 4 )  return function curriedFn(a,b,c,d){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 5 )  return function curriedFn(a,b,c,d,e){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 6 )  return function curriedFn(a,b,c,d,e,f){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 7 )  return function curriedFn(a,b,c,d,e,f,g){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 8 )  return function curriedFn(a,b,c,d,e,f,g,h){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 9 )  return function curriedFn(a,b,c,d,e,f,g,h,i){ return processInvocation(fn, argify(args, arguments)) };
-    if ( arity === 10 ) return function curriedFn(a,b,c,d,e,f,g,h,i,j){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 0 )  return function (){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 1 )  return function (a){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 2 )  return function (a,b){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 3 )  return function (a,b,c){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 4 )  return function (a,b,c,d){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 5 )  return function (a,b,c,d,e){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 6 )  return function (a,b,c,d,e,f){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 7 )  return function (a,b,c,d,e,f,g){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 8 )  return function (a,b,c,d,e,f,g,h){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 9 )  return function (a,b,c,d,e,f,g,h,i){ return processInvocation(fn, argify(args, arguments)) };
+    if ( arity === 10 ) return function (a,b,c,d,e,f,g,h,i,j){ return processInvocation(fn, argify(args, arguments)) };
     return createEvalFn(fn, args, arity);
 }
 

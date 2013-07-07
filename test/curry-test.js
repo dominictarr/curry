@@ -65,17 +65,9 @@ describe('curry', function(){
         a.equal(curry(function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o){}).length, 15)
     });
 
-    it('should return the a named function', function(){
-        var add = curry(function(a, b){ return a + b });
-
-        a.equal(add.name, 'curriedFn');
-        a.equal(add(1).name, 'curriedFn');
-    });
-
     it('should allow 0 arg curried fns', function(){
         var noop = curry(function(){});
 
-        a.equal(noop.length, 0);
         a.equal(noop(), undefined);
     })
 });
