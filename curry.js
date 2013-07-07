@@ -1,7 +1,7 @@
 var slice = Array.prototype.slice;
 var toArray = function(a){ return slice.call(a) }
 
-//-- fn, [value] -> fn
+// fn, [value] -> fn
 //-- create a curried function, incorporating any number of
 //-- pre-existing arguments (e.g. if you're further currying a function).
 var createFn = function(fn, args){
@@ -21,8 +21,8 @@ var createFn = function(fn, args){
     return createEvalFn(fn, args, arity);
 }
 
-//-- [value], arguments -> [value]
-// concat new arguments onto old arguments array
+// [value], arguments -> [value]
+//-- concat new arguments onto old arguments array
 var argify = function(args1, args2){
     return args1.concat(toArray(args2));
 }
@@ -45,7 +45,7 @@ var makeArgList = function(len){
     return a.join(',');
 }
 
-//-- fn, [value] -> value
+// fn, [value] -> value
 //-- handle a function being invoked.
 //-- if the arg list is long enough, the function will be called
 //-- otherwise, a new curried version is created.
@@ -55,7 +55,7 @@ var processInvocation = function(fn, args){
     return createFn(fn, args);
 }
 
-//-- fn -> fn
+// fn -> fn
 //-- curries a function! <3
 var curry = function(fn){
     return createFn(fn, []);
