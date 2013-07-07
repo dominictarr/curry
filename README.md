@@ -15,6 +15,8 @@ npm install curry
 # Usage
 
 ```javascript
+var curry = require('curry');
+
 //-- creating a curried function is pretty
 //-- straight forward:
 var add = curry(function(a, b){ return a + b });
@@ -44,5 +46,11 @@ var zipAddWith123 = zipAdd([1, 2, 3]);
 
 //-- both functions are usable as you'd expect at any time:
 zipAdd([1, 2, 3], [1, 2, 3]); //= [2, 4, 6]
-zipAddWith123([5, 6, 7]) //= [6, 8, 10]
+zipAddWith123([5, 6, 7]); //= [6, 8, 10]
+
+//-- the number of arguments a function is expected to provide
+//-- can be discovered by the .length property
+zipWith.length; //= 3
+zipAdd.length; //= 2
+zipAddWith123.length; //= 1
 ```

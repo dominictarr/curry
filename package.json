@@ -1,14 +1,16 @@
 {
   "name": "curry",
   "description": "flexible but simple curry function",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/dominictarr/curry",
   "repository": {
     "type": "git",
     "url": "git://github.com/dominictarr/curry.git"
   },
   "author": "Dominic Tarr <dominic.tarr@gmail.com>",
-  "contributors": ["Hugh FD Jackson <hughfdjackson@googlemail.com>"],
+  "contributors": [
+    "Hugh FD Jackson <hughfdjackson@googlemail.com>"
+  ],
   "main": "./curry",
   "devDependencies": {
     "mocha": "1.8.1"
