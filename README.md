@@ -8,13 +8,13 @@ _(... because hunger is the finest spice)_
 
 # install
 
-## node/npm
+### node/npm
 
 ```bash
 npm install curry
 ```
 
-## amd
+### amd
 
 ```javascript
 define(['libs/curry.min'], function(curry){
@@ -23,7 +23,7 @@ define(['libs/curry.min'], function(curry){
 });
 ```
 
-## browser
+### browser
 
 If you're not using tools like [browserify](https://github.com/substack/node-browserify) or [require.js](http://requirejs.org), you can load curry globally:
 ```html
