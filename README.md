@@ -67,7 +67,7 @@ npm install curry
 
 ```javascript
 define(['libs/curry.min'], function(curry){
-    //-- assuming libs/curry.min is the downloaded minified version from this repo,
+    //-- assuming libs/curry.min.js is the downloaded minified version from this repo,
     //-- curry will be available here
 });
 ```
