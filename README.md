@@ -6,14 +6,11 @@ _(... because hunger is the finest spice)_
 
 [![browser support](https://ci.testling.com/hughfdjackson/curry.png)](https://ci.testling.com/hughfdjackson/curry)
 
-# install
 
-```bash
-npm install curry
-```
 # Why
 
-If you don't know currying, and aren't sold on it's awesome, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) will help.
+If you don't know currying, or aren't sold on it's awesomeness, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) will help.
+
 
 # Usage
 
@@ -56,4 +53,31 @@ zipAddWith123([5, 6, 7]); //= [6, 8, 10]
 zipWith.length; //= 3
 zipAdd.length; //= 2
 zipAddWith123.length; //= 1
+```
+
+# installation
+
+### node/npm
+
+```bash
+npm install curry
+```
+
+### amd
+
+```javascript
+define(['libs/curry.min'], function(curry){
+    //-- assuming libs/curry.min.js is the downloaded minified version from this repo,
+    //-- curry will be available here
+});
+```
+
+### browser
+
+If you're not using tools like [browserify](https://github.com/substack/node-browserify) or [require.js](http://requirejs.org), you can load curry globally:
+```html
+<script src="libs/curry.min.js"></script>
+<script>
+    <!-- curry available here -->
+</script>
 ```
