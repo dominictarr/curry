@@ -39,4 +39,35 @@ describe('curry', function(){
         a.equal(sum3(1, 2, 3), sum3(1)(2, 3));
         a.equal(sum3(1, 2, 3), sum3(1)(2)(3));
     });
+
+    it('should report the arity of returned functions correctly', function(){
+        var sum3 = curry(function(a, b, c){ return a + b + c });
+
+        a.equal(sum3.length, 3);
+        a.equal(sum3(1).length, 2);
+        a.equal(sum3(1)(2).length, 1);
+
+        a.equal(curry(function(){}).length, 0)
+        a.equal(curry(function(a){}).length, 1)
+        a.equal(curry(function(a, b){}).length, 2)
+        a.equal(curry(function(a, b, c){}).length, 3)
+        a.equal(curry(function(a, b, c, d){}).length, 4)
+        a.equal(curry(function(a, b, c, d, e){}).length, 5)
+        a.equal(curry(function(a, b, c, d, e, f){}).length, 6)
+        a.equal(curry(function(a, b, c, d, e, f, g){}).length, 7)
+        a.equal(curry(function(a, b, c, d, e, f, g, h){}).length, 8)
+        a.equal(curry(function(a, b, c, d, e, f, g, h, i){}).length, 9)
+        a.equal(curry(function(a, b, c, d, e, f, g, h, i, j){}).length, 10)
+        a.equal(curry(function(a, b, c, d, e, f, g, h, i, j, k){}).length, 11)
+        a.equal(curry(function(a, b, c, d, e, f, g, h, i, j, k, l){}).length, 12)
+        a.equal(curry(function(a, b, c, d, e, f, g, h, i, j, k, l, m){}).length, 13)
+        a.equal(curry(function(a, b, c, d, e, f, g, h, i, j, k, l, m, n){}).length, 14)
+        a.equal(curry(function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o){}).length, 15)
+    });
+
+    it('should allow 0 arg curried fns', function(){
+        var noop = curry(function(){});
+
+        a.equal(noop(), undefined);
+    })
 });
