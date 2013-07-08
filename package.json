@@ -13,7 +13,9 @@
   ],
   "main": "./curry",
   "devDependencies": {
-    "mocha": "1.8.1"
+    "mocha": "1.8.1",
+    "browserify": "2.17.2",
+    "uglify-js": "2.3.6"
   },
   "testling": {
     "files": "test/*-test.js",
@@ -33,6 +35,7 @@
     "harness": "mocha"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test"
+    "test": "./node_modules/mocha/bin/mocha test",
+    "prepublish": "./node_modules/browserify/bin/cmd.js --standalone curry -e curry.js | ./node_modules/uglify-js/bin/uglifyjs > curry.min.js"
   }
 }
