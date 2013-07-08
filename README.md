@@ -6,6 +6,11 @@ _(... because hunger is the finest spice)_
 
 [![browser support](https://ci.testling.com/hughfdjackson/curry.png)](https://ci.testling.com/hughfdjackson/curry)
 
+
+# Why
+
+If you don't know currying, and aren't sold on it's awesome, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) will help.
+
 # install
 
 ### node/npm
@@ -32,10 +37,6 @@ If you're not using tools like [browserify](https://github.com/substack/node-bro
     <!-- curry available here -->
 </script>
 ```
-
-# Why
-
-If you don't know currying, and aren't sold on it's awesome, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) will help.
 
 # Usage
 
