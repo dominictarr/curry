@@ -14,7 +14,7 @@ If you don't know currying, or aren't sold on it's awesomeness, perhaps [a frien
 
 # API
 
-## curry
+### curry
 
 ```javascript
 var curry = require('curry');
@@ -57,7 +57,7 @@ zipAdd.length; //= 2
 zipAddWith123.length; //= 1
 ```
 
-## curry.to
+### curry.to
 
 Sometimes it's necessary (especially when wrapping variadic functions) to
 explicitly provide an arity for your curried function:
