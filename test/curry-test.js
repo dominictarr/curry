@@ -69,5 +69,29 @@ describe('curry', function(){
         var noop = curry(function(){});
 
         a.equal(noop(), undefined);
-    })
+    });
+});
+
+describe('curry.to', function(){
+
+    it('curry to the specified arity', function(){
+        var noop = function(){};
+
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].forEach(function(n){
+            a.equal(curry.to(n, noop).length, n);
+        });
+    });
+
+    it('should be curried', function(){
+        var sum = function(){
+            var nums = [].slice.call(arguments);
+            var count = 0;
+
+            for ( var i = 0; i < nums.length; i += 1 )  count += nums[i];
+            return count;
+        };
+
+        var sum3 = curry.to(3)(sum);
+        a.equal(sum3(1)(2)(3), 6);
+    });
 });
