@@ -77,9 +77,8 @@ describe('curry.to', function(){
     it('curry to the specified arity', function(){
         var noop = function(){};
 
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].forEach(function(n){
+        for ( var i = 0; i < 15; i += 1 )
             a.equal(curry.to(n, noop).length, n);
-        });
     });
 
     it('should be curried', function(){
