@@ -12,7 +12,9 @@ _(... because hunger is the finest spice)_
 If you don't know currying, or aren't sold on it's awesomeness, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) will help.
 
 
-# Usage
+# API
+
+## curry
 
 ```javascript
 var curry = require('curry');
@@ -53,6 +55,24 @@ zipAddWith123([5, 6, 7]); //= [6, 8, 10]
 zipWith.length; //= 3
 zipAdd.length; //= 2
 zipAddWith123.length; //= 1
+```
+
+## curry.to
+
+Sometimes it's necessary (especially when wrapping variadic functions) to
+explicitly provide an arity for your curried function:
+
+```javascript
+var sum = function(){
+	var nums = [].slice.call(arguments);
+	return nums.reduce(function(a, b){ return a + b });
+}
+
+var sum3 = curry.to(3, sum);
+var sum4 = curry.to(4, sum);
+
+sum3(1, 2)(3) //= 6
+sum4(1)(2)(3, 4) //= 10
 ```
 
 # installation

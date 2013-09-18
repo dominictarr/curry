@@ -4,28 +4,28 @@ var toArray = function(a){ return slice.call(a) }
 // fn, [value] -> fn
 //-- create a curried function, incorporating any number of
 //-- pre-existing arguments (e.g. if you're further currying a function).
-var createFn = function(fn, args){
-    var arity = fn.length - args.length;
+var createFn = function(fn, args, totalArity){
+    var remainingArity = totalArity - args.length;
 
-    switch (arity) {
-        case 0: return function (){ return processInvocation(fn, argify(args, arguments)) };
-        case 1: return function (a){ return processInvocation(fn, argify(args, arguments)) };
-        case 2: return function (a,b){ return processInvocation(fn, argify(args, arguments)) };
-        case 3: return function (a,b,c){ return processInvocation(fn, argify(args, arguments)) };
-        case 4: return function (a,b,c,d){ return processInvocation(fn, argify(args, arguments)) };
-        case 5: return function (a,b,c,d,e){ return processInvocation(fn, argify(args, arguments)) };
-        case 6: return function (a,b,c,d,e,f){ return processInvocation(fn, argify(args, arguments)) };
-        case 7: return function (a,b,c,d,e,f,g){ return processInvocation(fn, argify(args, arguments)) };
-        case 8: return function (a,b,c,d,e,f,g,h){ return processInvocation(fn, argify(args, arguments)) };
-        case 9: return function (a,b,c,d,e,f,g,h,i){ return processInvocation(fn, argify(args, arguments)) };
-        case 10: return function (a,b,c,d,e,f,g,h,i,j){ return processInvocation(fn, argify(args, arguments)) };
-        default: return createEvalFn(fn, args, arity);
+    switch (remainingArity) {
+        case 0: return function(){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 1: return function(a){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 2: return function(a,b){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 3: return function(a,b,c){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 4: return function(a,b,c,d){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 5: return function(a,b,c,d,e){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 6: return function(a,b,c,d,e,f){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 7: return function(a,b,c,d,e,f,g){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 8: return function(a,b,c,d,e,f,g,h){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 9: return function(a,b,c,d,e,f,g,h,i){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 10: return function(a,b,c,d,e,f,g,h,i,j){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        default: return createEvalFn(fn, args, remainingArity);
     }
 }
 
 // [value], arguments -> [value]
 //-- concat new arguments onto old arguments array
-var argify = function(args1, args2){
+var concatArgs = function(args1, args2){
     return args1.concat(toArray(args2));
 }
 
@@ -37,7 +37,7 @@ var createEvalFn = function(fn, args, arity){
 
     //-- hack for IE's faulty eval parsing -- http://stackoverflow.com/a/6807726
     var fnStr = 'false||' +
-                'function curriedFn(' + argList + '){ return processInvocation(fn, argify(args, arguments)); }';
+                'function(' + argList + '){ return processInvocation(fn, concatArgs(args, arguments)); }';
     return eval(fnStr);
 }
 
@@ -47,20 +47,32 @@ var makeArgList = function(len){
     return a.join(',');
 }
 
+var trimArrLength = function(arr, length){
+    if ( arr.length > length ) return arr.slice(0, length);
+    else return arr;
+}
+
 // fn, [value] -> value
 //-- handle a function being invoked.
 //-- if the arg list is long enough, the function will be called
 //-- otherwise, a new curried version is created.
-var processInvocation = function(fn, args){
-    if ( args.length > fn.length ) return fn.apply(null, args.slice(0, fn.length));
-    if ( args.length === fn.length ) return fn.apply(null, args);
-    return createFn(fn, args);
+var processInvocation = function(fn, argsArr, totalArity){
+    argsArr = trimArrLength(argsArr, totalArity);
+
+    if ( argsArr.length === totalArity ) return fn.apply(null, argsArr);
+    return createFn(fn, argsArr, totalArity);
 }
 
 // fn -> fn
 //-- curries a function! <3
 var curry = function(fn){
-    return createFn(fn, []);
+    return createFn(fn, [], fn.length);
 };
+
+// num, fn -> fn
+//-- curries a function to a certain arity! <33
+curry.to = curry(function(arity, fn){
+    return createFn(fn, [], arity);
+});
 
 module.exports = curry;
