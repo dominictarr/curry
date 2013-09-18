@@ -78,7 +78,7 @@ describe('curry.to', function(){
         var noop = function(){};
 
         for ( var i = 0; i < 15; i += 1 )
-            a.equal(curry.to(n, noop).length, n);
+            a.equal(curry.to(i, noop).length, i);
     });
 
     it('should be curried', function(){
