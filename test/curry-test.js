@@ -74,7 +74,7 @@ describe('curry', function(){
 
 describe('curry.to', function(){
 
-    it('curry to the specified arity', function(){
+    it('should curry to the specified arity', function(){
         var noop = function(){};
 
         for ( var i = 0; i < 15; i += 1 )
@@ -92,5 +92,42 @@ describe('curry.to', function(){
 
         var sum3 = curry.to(3)(sum);
         a.equal(sum3(1)(2)(3), 6);
+    });
+});
+
+describe('curry.adapt', function(){
+    it('should shift the first argument the end', function(){
+        var noop = curry.adapt(function(){});
+        var cat1 = curry.adapt(function(a){ return a });
+        var cat2 = curry.adapt(function(a, b){ return a + b });
+        var cat3 = curry.adapt(function(a, b, c){ return a + b + c });
+        var cat4 = curry.adapt(function(a, b, c, d){ return a + b + c + d });
+
+        a.equal(noop(), undefined);
+        a.equal(cat1('a'), 'a');
+        a.equal(cat2('a')('b'), 'ba');
+        a.equal(cat3('a', 'b')('c'), 'bca');
+        a.equal(cat4('a', 'b')('c', 'd'), 'bcda');
+    });
+});
+
+describe('curry.adaptTo', function(){
+    it('should shift the first argument the end, and curry by a specified amount', function(){
+        var cat = function(){
+            var args = [].slice.call(arguments);
+            return args.join('');
+        }
+
+        var noop = curry.adaptTo(0)(cat);
+        var cat1 = curry.adaptTo(1)(cat);
+        var cat2 = curry.adaptTo(2)(cat);
+        var cat3 = curry.adaptTo(3)(cat);
+        var cat4 = curry.adaptTo(4)(cat);
+
+        a.equal(noop(), '');
+        a.equal(cat1('a'), 'a');
+        a.equal(cat2('a')('b'), 'ba');
+        a.equal(cat3('a', 'b')('c'), 'bca');
+        a.equal(cat4('a', 'b')('c', 'd'), 'bcda');
     });
 });
