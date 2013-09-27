@@ -1,5 +1,6 @@
 var slice = Array.prototype.slice;
 var toArray = function(a){ return slice.call(a) }
+var tail = function(a){ return slice.call(a, 1) }
 
 // fn, [value] -> fn
 //-- create a curried function, incorporating any number of
@@ -67,12 +68,30 @@ var processInvocation = function(fn, argsArr, totalArity){
 //-- curries a function! <3
 var curry = function(fn){
     return createFn(fn, [], fn.length);
-};
+}
 
 // num, fn -> fn
 //-- curries a function to a certain arity! <33
 curry.to = curry(function(arity, fn){
     return createFn(fn, [], arity);
 });
+
+// num, fn -> fn
+//-- adapts a function in the context-first style
+//-- to a curried version. <3333
+curry.adaptTo = curry(function(num, fn){
+    return curry.to(num, function(context){
+        var args = tail(arguments).concat(context);
+        return fn.apply(this, args);
+    });
+})
+
+// fn -> fn
+//-- adapts a function in the context-first style to
+//-- a curried version. <333
+curry.adapt = function(fn){
+    return curry.adaptTo(fn.length, fn)
+}
+
 
 module.exports = curry;
