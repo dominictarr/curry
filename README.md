@@ -59,8 +59,7 @@ zipAddWith123.length; //= 1
 
 ### curry.to
 
-Sometimes it's necessary (especially when wrapping variadic functions) to
-explicitly provide an arity for your curried function:
+Sometimes it's necessary (especially when wrapping variadic functions) to explicitly provide an arity for your curried function:
 
 ```javascript
 var sum = function(){
@@ -73,6 +72,33 @@ var sum4 = curry.to(4, sum);
 
 sum3(1, 2)(3) //= 6
 sum4(1)(2)(3, 4) //= 10
+```
+
+### curry.adapt
+
+It's a (sad?) fact that JavaScript functions are often written to take the 'context' object as the first argument.
+
+With curried functions, of course, we want it to be the last object.  `curry.adapt` shifts the context to the last argument,
+to give us a hand with this:
+
+```javascript
+var delve = require('delve');
+var delveC = curry.adapt(delve);
+
+var getDataFromResponse = delveC('response.body.data');
+getDataFromResponse({ response: { body: { data: { x: 2 }} } }); //= { x: 2 }
+```
+
+### curry.adaptTo
+
+Like `curry.adapt`, but the arity explicitly provided:
+
+```javascript
+var _ = require('lodash');
+var map = curry.adaptTo(2, _.map);
+var mapInc = map(function(a){ return a + 1 })
+
+mapInc([1, 2, 3]) //= [2, 3, 4]
 ```
 
 # installation
@@ -101,3 +127,4 @@ If you're not using tools like [browserify](https://github.com/substack/node-bro
     <!-- curry available here -->
 </script>
 ```
+∏∏
