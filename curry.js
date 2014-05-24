@@ -1,11 +1,25 @@
+/* public */
+
+module.exports = curry;
+
+curry.adapt    = adapt;
+curry.adaptTo  = curry(adaptTo);
+curry.to       = curry(to);
+
+/* private */
+
+// fn -> fn
+//-- curries a function! <3
+function curry(fn){
+    return createFn(fn, [], fn.length);
+}
+
 var slice = Array.prototype.slice;
-var toArray = function(a){ return slice.call(a) }
-var tail = function(a){ return slice.call(a, 1) }
 
 // fn, [value] -> fn
 //-- create a curried function, incorporating any number of
 //-- pre-existing arguments (e.g. if you're further currying a function).
-var createFn = function(fn, args, totalArity){
+function createFn(fn, args, totalArity){
     var remainingArity = totalArity - args.length;
 
     switch (remainingArity) {
@@ -22,76 +36,73 @@ var createFn = function(fn, args, totalArity){
         case 10: return function(a,b,c,d,e,f,g,h,i,j){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
         default: return createEvalFn(fn, args, remainingArity);
     }
-}
 
-// [value], arguments -> [value]
-//-- concat new arguments onto old arguments array
-var concatArgs = function(args1, args2){
-    return args1.concat(toArray(args2));
-}
+    // fn, [value] -> value
+    //-- handle a function being invoked.
+    //-- if the arg list is long enough, the function will be called
+    //-- otherwise, a new curried version is created.
+    function processInvocation(fn, argsArr, totalArity){
+        argsArr = trimArrLength(argsArr, totalArity);
 
-// fn, [value], int -> fn
-//-- create a function of the correct arity by the use of eval,
-//-- so that curry can handle functions of any arity
-var createEvalFn = function(fn, args, arity){
-    var argList = makeArgList(arity);
+        if ( argsArr.length === totalArity ) return fn.apply(null, argsArr);
+        return createFn(fn, argsArr, totalArity);
 
-    //-- hack for IE's faulty eval parsing -- http://stackoverflow.com/a/6807726
-    var fnStr = 'false||' +
-                'function(' + argList + '){ return processInvocation(fn, concatArgs(args, arguments)); }';
-    return eval(fnStr);
-}
 
-var makeArgList = function(len){
-    var a = [];
-    for ( var i = 0; i < len; i += 1 ) a.push('a' + i.toString());
-    return a.join(',');
-}
+        function trimArrLength(arr, length){
+            if ( arr.length > length ) return arr.slice(0, length);
+            else return arr;
+        }
 
-var trimArrLength = function(arr, length){
-    if ( arr.length > length ) return arr.slice(0, length);
-    else return arr;
-}
+    }
 
-// fn, [value] -> value
-//-- handle a function being invoked.
-//-- if the arg list is long enough, the function will be called
-//-- otherwise, a new curried version is created.
-var processInvocation = function(fn, argsArr, totalArity){
-    argsArr = trimArrLength(argsArr, totalArity);
+    // [value], arguments -> [value]
+    //-- concat new arguments onto old arguments array
+    function concatArgs(args1, args2){
+        return args1.concat(toArray(args2));
 
-    if ( argsArr.length === totalArity ) return fn.apply(null, argsArr);
-    return createFn(fn, argsArr, totalArity);
-}
+        function toArray(a){ return slice.call(a) }
+    }
 
-// fn -> fn
-//-- curries a function! <3
-var curry = function(fn){
-    return createFn(fn, [], fn.length);
+    // fn, [value], int -> fn
+    //-- create a function of the correct arity by the use of eval,
+    //-- so that curry can handle functions of any arity
+    function createEvalFn(fn, args, arity){
+        var argList = makeArgList(arity);
+
+        //-- hack for IE's faulty eval parsing -- http://stackoverflow.com/a/6807726
+        var fnStr = 'false||' +
+            'function(' + argList + '){ return processInvocation(fn, concatArgs(args, arguments)); }';
+        return eval(fnStr);
+
+        function makeArgList (len){
+            var a = [];
+            for ( var i = 0; i < len; i += 1 ) a.push('a' + i.toString());
+            return a.join(',');
+        }
+    }
 }
 
 // num, fn -> fn
 //-- curries a function to a certain arity! <33
-curry.to = curry(function(arity, fn){
+function to(arity, fn){
     return createFn(fn, [], arity);
-});
-
-// num, fn -> fn
-//-- adapts a function in the context-first style
-//-- to a curried version. <3333
-curry.adaptTo = curry(function(num, fn){
-    return curry.to(num, function(context){
-        var args = tail(arguments).concat(context);
-        return fn.apply(this, args);
-    });
-})
+}
 
 // fn -> fn
 //-- adapts a function in the context-first style to
 //-- a curried version. <333
-curry.adapt = function(fn){
+function adapt(fn){
     return curry.adaptTo(fn.length, fn)
 }
 
+// num, fn -> fn
+//-- adapts a function in the context-first style
+//-- to a curried version. <3333
+function adaptTo(num, fn){
+    return curry.to(num, function(context){
+        var args = tail(arguments).concat(context);
+        return fn.apply(this, args);
+    });
 
-module.exports = curry;
+    function tail(a){ return slice.call(a, 1) }
+}
