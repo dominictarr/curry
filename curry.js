@@ -90,7 +90,7 @@ function createFn(fn, args, totalArity){
 //-- adapts a function in the context-first style to
 //-- a curried version. <333
 function adapt(fn){
-    return adaptTo(fn.length, fn)
+    return curry.adaptTo(fn.length, fn);
 }
 
 // num, fn -> fn
