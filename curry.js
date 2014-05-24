@@ -2,9 +2,9 @@
 
 module.exports = curry;
 
+curry.to       = curry(to);
 curry.adapt    = adapt;
 curry.adaptTo  = curry(adaptTo);
-curry.to       = curry(to);
 
 /* private */
 
@@ -14,7 +14,11 @@ function curry(fn){
     return createFn(fn, [], fn.length);
 }
 
-var slice = Array.prototype.slice;
+// num, fn -> fn
+//-- curries a function to a certain arity! <33
+function to(arity, fn){
+    return createFn(fn, [], arity);
+}
 
 // fn, [value] -> fn
 //-- create a curried function, incorporating any number of
@@ -82,27 +86,23 @@ function createFn(fn, args, totalArity){
     }
 }
 
-// num, fn -> fn
-//-- curries a function to a certain arity! <33
-function to(arity, fn){
-    return createFn(fn, [], arity);
-}
-
 // fn -> fn
 //-- adapts a function in the context-first style to
 //-- a curried version. <333
 function adapt(fn){
-    return curry.adaptTo(fn.length, fn)
+    return adaptTo(fn.length, fn)
 }
 
 // num, fn -> fn
 //-- adapts a function in the context-first style
 //-- to a curried version. <3333
 function adaptTo(num, fn){
-    return curry.to(num, function(context){
+    return to(num, function(context){
         var args = tail(arguments).concat(context);
         return fn.apply(this, args);
     });
 
     function tail(a){ return slice.call(a, 1) }
 }
+
+var slice = Array.prototype.slice;
