@@ -9,7 +9,7 @@ _(... because hunger is the finest spice)_
 
 # Why
 
-If you don't know currying, or aren't sold on it's awesomeness, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/2013/07/06/why-curry-helps/) will help.
+If you don't know currying, or aren't sold on it's awesomeness, perhaps [a friendly blog post](http://hughfdjackson.com/javascript/why-curry-helps) will help.
 
 
 # API
