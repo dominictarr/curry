@@ -70,6 +70,12 @@ describe('curry', function(){
 
         a.equal(noop(), undefined);
     });
+
+    it('should pass through context to curried functions', function() {
+        var reportThis = curry(function() { return this; });
+
+        a.equal(reportThis.call('Context'), 'Context');
+    });
 });
 
 describe('curry.to', function(){

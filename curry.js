@@ -9,17 +9,17 @@ var createFn = function(fn, args, totalArity){
     var remainingArity = totalArity - args.length;
 
     switch (remainingArity) {
-        case 0: return function(){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 1: return function(a){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 2: return function(a,b){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 3: return function(a,b,c){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 4: return function(a,b,c,d){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 5: return function(a,b,c,d,e){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 6: return function(a,b,c,d,e,f){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 7: return function(a,b,c,d,e,f,g){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 8: return function(a,b,c,d,e,f,g,h){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 9: return function(a,b,c,d,e,f,g,h,i){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
-        case 10: return function(a,b,c,d,e,f,g,h,i,j){ return processInvocation(fn, concatArgs(args, arguments), totalArity) };
+        case 0: return function(){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 1: return function(a){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 2: return function(a,b){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 3: return function(a,b,c){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 4: return function(a,b,c,d){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 5: return function(a,b,c,d,e){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 6: return function(a,b,c,d,e,f){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 7: return function(a,b,c,d,e,f,g){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 8: return function(a,b,c,d,e,f,g,h){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 9: return function(a,b,c,d,e,f,g,h,i){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
+        case 10: return function(a,b,c,d,e,f,g,h,i,j){ return processInvocation.call(this, fn, concatArgs(args, arguments), totalArity) };
         default: return createEvalFn(fn, args, remainingArity);
     }
 }
@@ -38,7 +38,7 @@ var createEvalFn = function(fn, args, arity){
 
     //-- hack for IE's faulty eval parsing -- http://stackoverflow.com/a/6807726
     var fnStr = 'false||' +
-                'function(' + argList + '){ return processInvocation(fn, concatArgs(args, arguments)); }';
+                'function(' + argList + '){ return processInvocation.call(this, fn, concatArgs(args, arguments)); }';
     return eval(fnStr);
 }
 
@@ -60,7 +60,7 @@ var trimArrLength = function(arr, length){
 var processInvocation = function(fn, argsArr, totalArity){
     argsArr = trimArrLength(argsArr, totalArity);
 
-    if ( argsArr.length === totalArity ) return fn.apply(null, argsArr);
+    if ( argsArr.length === totalArity ) return fn.apply(this, argsArr);
     return createFn(fn, argsArr, totalArity);
 }
 
@@ -92,6 +92,5 @@ curry.adaptTo = curry(function(num, fn){
 curry.adapt = function(fn){
     return curry.adaptTo(fn.length, fn)
 }
-
 
 module.exports = curry;
