@@ -1,6 +1,10 @@
 CURRY
 =====
 
+[![NPM version][npm-image]][npm-url]
+[![Build status][travis-image]][travis-url]
+[![Downloads][downloads-image]][downloads-url]
+
 A curry function without anything **too clever**
 _(... because hunger is the finest spice)_
 
@@ -128,3 +132,11 @@ If you're not using tools like [browserify](https://github.com/substack/node-bro
 </script>
 ```
 ∏∏
+
+
+[npm-image]: https://img.shields.io/npm/v/curry.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/curry
+[travis-image]: https://img.shields.io/travis/dominictarr/curry.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dominictarr/curry
+[downloads-image]: http://img.shields.io/npm/dm/curry.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/curry
