@@ -1,6 +1,10 @@
 var slice = Array.prototype.slice;
 var toArray = function(a){ return slice.call(a) }
-var tail = function(a){ return slice.call(a, 1) }
+var unshiftLast = function(a){ 
+    a = toArray(a);
+    a.unshift(a.pop());
+    return a;
+}
 
 // fn, [value] -> fn
 //-- create a curried function, incorporating any number of
@@ -80,8 +84,8 @@ curry.to = curry(function(arity, fn){
 //-- adapts a function in the context-first style
 //-- to a curried version. <3333
 curry.adaptTo = curry(function(num, fn){
-    return curry.to(num, function(context){
-        var args = tail(arguments).concat(context);
+    return curry.to(num, function(){
+        var args = unshiftLast(arguments) 
         return fn.apply(this, args);
     });
 })

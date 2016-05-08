@@ -96,7 +96,7 @@ describe('curry.to', function(){
 });
 
 describe('curry.adapt', function(){
-    it('should shift the first argument the end', function(){
+    it('should unshift the last argument', function(){
         var noop = curry.adapt(function(){});
         var cat1 = curry.adapt(function(a){ return a });
         var cat2 = curry.adapt(function(a, b){ return a + b });
@@ -105,14 +105,20 @@ describe('curry.adapt', function(){
 
         a.equal(noop(), undefined);
         a.equal(cat1('a'), 'a');
-        a.equal(cat2('a')('b'), 'ba');
-        a.equal(cat3('a', 'b')('c'), 'bca');
-        a.equal(cat4('a', 'b')('c', 'd'), 'bcda');
+        a.equal(cat2('b')('a'), 'ab');
+        a.equal(cat3('b', 'c')('a'), 'abc');
+        a.equal(cat4('b', 'c')('d', 'a'), 'abcd');
+
+        var dataFromResponse = curry.adapt(function dataFromResponse(o, a, b, c) {
+            return o[a][b][c];
+        });
+        var context = { response: { body: { data: { x: 2 }} } };
+        a.deepEqual(dataFromResponse('response')('body')('data')(context), {x: 2});
     });
 });
 
 describe('curry.adaptTo', function(){
-    it('should shift the first argument the end, and curry by a specified amount', function(){
+    it('should unshift the last argument, and curry by a specified amount', function(){
         var cat = function(){
             var args = [].slice.call(arguments);
             return args.join('');
@@ -126,8 +132,8 @@ describe('curry.adaptTo', function(){
 
         a.equal(noop(), '');
         a.equal(cat1('a'), 'a');
-        a.equal(cat2('a')('b'), 'ba');
-        a.equal(cat3('a', 'b')('c'), 'bca');
-        a.equal(cat4('a', 'b')('c', 'd'), 'bcda');
+        a.equal(cat2('b')('a'), 'ab');
+        a.equal(cat3('b', 'c')('a'), 'abc');
+        a.equal(cat4('b', 'c')('d', 'a'), 'abcd');
     });
 });
