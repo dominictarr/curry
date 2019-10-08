@@ -16,7 +16,7 @@
     "mocha": "1.8.1",
     "browserify": "2.17.2",
     "uglify-js": "2.3.6",
-    "lodash": "2.1.0",
+    "lodash": "4.17.15",
     "delve": "0.3.2"
   },
   "testling": {
